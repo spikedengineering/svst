@@ -1,2 +1,2 @@
-# python-standalone-variables-type-checking
-Standalone Variables Type Checking with AST
+# python-standalone-variable-type-checking
+Standalone Variable Type Checking with AST
