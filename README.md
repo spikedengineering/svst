@@ -12,3 +12,5 @@ After fixing a huge mess I wanted to go a step further and not only enforce the 
 
 At first, I created a simple file to do this but soon I found that I needed a proper implementation of this to spread to all my projects and possibly help the community.
 A huge kudos to @alphasensei for doing the initial research and developing the proof of concept of what this library wat at first.
+
+This is an attempt of bringing full static typing to Python and with this much more robust codebases.
