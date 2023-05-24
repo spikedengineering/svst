@@ -18,7 +18,7 @@ One of the major selling points the dynamic typing, at first.
 
 When you start scaling Python and using it on huge projects dealing with a lot of different entities and flows you can make a mistake and find the pitfall of not knowing why your variable is not being interpreted as you wish it was; between other issues (if you try to statically type an existing codebase with MyPy you'll find how bad your code is in terms of typing consistency; at least that happened to me).
 
-After fixing a huge mess I wanted to go a step further and not only enforce the type of functions/classes input and output but to type my standalone variables as well until I found that mypy doesn't do that.
+After fixing a huge mess I wanted to go a step further and not only enforce the typing of functions/classes input and output but to type my standalone variables as well until I found that mypy doesn't check that because his goal is to find the balance between dynamic and static typing; I wanted to go full-on static.
 
 At first, I created a simple file to do this but soon I found that I needed a proper implementation of this to spread to all my projects and possibly help the community.
 
