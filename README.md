@@ -1,5 +1,5 @@
 # Python SVST
-Standalone Variables Static Type Checking with [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
+Standalone Variables Static Type Checking using [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 
 ### Why?
 Python is an amazing programming language; my favorite one for a lot of reasons. With the broad functionality, ease of use, development speed, and friendly community, I could be here all day saying good things about it.
