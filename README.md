@@ -1,5 +1,5 @@
 # python-standalone-variable-type-checking
-Standalone Variables Type Checking with AST
+Standalone Variables Type Checking with [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 
 ### Why?
 Python is an amazing programming language; my favorite one for a lot of reasons. With the broad functionality, ease of use, development speed, and friendly community, I could be here all day.
