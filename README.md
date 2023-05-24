@@ -1,4 +1,4 @@
-# Python SVST
+# Python Standalone Variable Static Typing
 Standalone Variable Static Type Checking using [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 
 ### Why?
