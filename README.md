@@ -1,4 +1,4 @@
-# python-standalone-variable-type-checking
+# Python SVTC
 Standalone Variables Type Checking with [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 
 ### Why?
