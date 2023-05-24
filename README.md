@@ -1,6 +1,12 @@
 # Standalone Variable Static Typing
 
-![Python Version](https://img.shields.io/badge/Python-3.8-yellow.svg)
+![Python Version](https://img.shields.io/badge/Python-3.6-yellow.svg)
+[![Stable Version](https://img.shields.io/pypi/v/svst?color=blue)](https://pypi.org/project/svst/)
+[![Downloads](https://img.shields.io/pypi/dm/svst)](https://pypistats.org/packages/svst)
+[![Build Status](https://github.com/spikedengineering/svst/actions/workflows/test.yml/badge.svg)](https://github.com/spikedengineering/svst/actions)
+[![Documentation Status](https://readthedocs.org/projects/svst/badge/?version=latest)](https://svst.readthedocs.io/en/latest/?badge=latest)
+[![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Standalone Variable Static Type Checker using [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 
