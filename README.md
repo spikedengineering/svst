@@ -10,7 +10,7 @@
 
 Standalone Variable Static Type Checker using [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 
-A full-on static typing approach to writing python code <3
+A full-on static typing approach to writing Python code <3
 
 ### Why?
 
