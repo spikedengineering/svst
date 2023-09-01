@@ -1,6 +1,6 @@
 # Standalone Variable Static Typing
 
-![Python Version](https://img.shields.io/badge/Python-3.6-yellow.svg)
+![Python Version](https://img.shields.io/badge/Python-3.6.15-yellow.svg)
 [![Stable Version](https://img.shields.io/pypi/v/svst?color=blue)](https://pypi.org/project/svst/)
 [![Downloads](https://img.shields.io/pypi/dm/svst)](https://pypistats.org/packages/svst)
 [![Build Status](https://github.com/spikedengineering/svst/actions/workflows/test.yml/badge.svg)](https://github.com/spikedengineering/svst/actions)
@@ -12,7 +12,7 @@ Standalone Variable Static Type Checker using [Abstract Syntax Trees](https://do
 
 A full-on static typing approach to writing Python code <3
 
-### Why?
+## Why?
 
 Python is an amazing programming language; my favorite one for a lot of reasons. With the broad functionality, ease of use, development speed, and friendly community; I could be here all day saying good things about it.
 
@@ -27,3 +27,36 @@ At first, I created a simple file to do this, but soon I found that I needed a p
 I'd like to extend immense gratitude to [@alphasensei](https://github.com/alphasensei) for pioneering the research and developing the initial proof of concept for this library.
 
 This is an attempt of bringing full-on static typing to Python and, with it, much more robust codebases.
+
+## Quick start
+
+Svst can be installed using pip:
+
+```shell
+python3 -m pip install -U svst
+```
+
+Now you can type-check the standalone variables of a program like this:
+
+```shell
+svst PROGRAM
+```
+
+You can type-check a program including the `mypy` functionality like this as well:
+
+```shell
+svst --mypy PROGRAM
+```
+
+## Integrations
+
+* Vim
+* PyCharm
+* VS Code
+* pre-commit
+
+## Documentation
+
+
+
+## Contributing
