@@ -36,7 +36,7 @@ Svst can be installed using pip:
 python3 -m pip install -U svst
 ```
 
-Now you can type-check the standalone variables of a program like this:
+You can type-check the standalone variables of a program like this:
 
 ```shell
 svst PROGRAM
