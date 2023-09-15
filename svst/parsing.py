@@ -1,37 +1,10 @@
 import ast
 
-from typing import List, Dict, Union, Optional, Generator
+from typing import List, Dict, Union, Optional
 
+from svst.constants import STANDARD_LOGGING_LEVEL
 
-def output_structure_constructor(
-    file_name: Optional[str],
-    line_number: int,
-    variable_name: str,
-    variable_scope: str,
-    logging_level: str = "DEBUG",
-) -> Dict:
-    return {
-        "file_name": file_name,
-        "line_number": line_number,
-        "variable_name": variable_name,
-        "variable_scope": variable_scope,
-        "logging_level": logging_level,
-    }
-
-
-def output_structure_text_constructor(
-    output_structure: Dict,
-) -> str:
-    string = (
-        f"{output_structure['file_name']}:{output_structure['line_number']}: "
-        f"error: Variable \"{output_structure['variable_name']}\" is missing "
-        f"a standalone variable type annotation in the "
-        f"scope \"{output_structure['variable_scope']}\"  [no-untyped-var]"
-    )
-
-    # todo: logging level
-
-    return string
+from svst.output import output_structure_constructor
 
 
 class ParentNodeTransformer(ast.NodeTransformer):
@@ -44,7 +17,9 @@ class ParentNodeTransformer(ast.NodeTransformer):
 
 class StaticTypeEnforcer(ast.NodeVisitor):
     def __init__(
-        self, file_name: Optional[str] = None, logging_level: str = "error"
+        self,
+        file_name: Optional[str] = None,
+        logging_level: str = STANDARD_LOGGING_LEVEL,
     ) -> None:
         self.scope: str = "global"
         self.assignments: Dict[str, set] = {"global": set()}
@@ -81,9 +56,9 @@ class StaticTypeEnforcer(ast.NodeVisitor):
                         output_structure_constructor(
                             self.file_name,
                             node.lineno,
-                            self.logging_level,
                             var_name,
                             self.scope,
+                            self.logging_level,
                         )
                     )
                 self.assignments[self.scope].add(var_name)
@@ -97,9 +72,24 @@ class StaticTypeEnforcer(ast.NodeVisitor):
                     output_structure_constructor(
                         self.file_name,
                         node.lineno,
-                        self.logging_level,
                         var_name,
                         self.scope,
+                        self.logging_level,
                     )
                 )
+        if isinstance(node.target, ast.Tuple):
+            for elt in node.target.elts:
+                if isinstance(elt, ast.Name):
+                    var_name = elt.id
+                    if var_name not in self.type_annotations[self.scope]:
+                        self.output.append(
+                            output_structure_constructor(
+                                self.file_name,
+                                node.lineno,
+                                var_name,
+                                self.scope,
+                                self.logging_level,
+                            )
+                        )
+
         self.generic_visit(node)
