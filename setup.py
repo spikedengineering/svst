@@ -17,7 +17,7 @@ with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
 # This call to setup() does all the work
 setup(
     name="svst",
-    version="0.1.2",
+    version="0.1.3",
     description="Standalone Variable Static Typing",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -27,7 +27,7 @@ setup(
     license="MPL2",
     classifiers=[
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MPL2 License",
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
