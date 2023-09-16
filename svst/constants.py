@@ -1,3 +1,6 @@
-POSSIBLE_CONFIGURATION_FILES = ["svst.ini", "setup.cfg"]
+from typing import List
 
-STANDARD_LOGGING_LEVEL = "DEBUG"
+
+POSSIBLE_CONFIGURATION_FILES: List[str] = ["svst.ini", "setup.cfg"]
+
+STANDARD_LOGGING_LEVEL: str = "DEBUG"

@@ -2,20 +2,17 @@ import ast
 import os
 import io
 
-import utils, output, parsing
+from svst import utils, output, parsing
 
 from typing import List, Optional
 
-
-from constants import (
-    STANDARD_LOGGING_LEVEL,
-)
+from svst import constants
 
 
 def parse_code(
     code: str,
+    logging_level: str = constants.STANDARD_LOGGING_LEVEL,
     file_name: Optional[str] = None,
-    logging_level: str = STANDARD_LOGGING_LEVEL,
 ) -> List[output.OutputTypedDict]:
     """Parse code directly and return a list of output dictionaries."""
 
@@ -31,7 +28,7 @@ def parse_code(
 
 def run(
     path_list: List[str],
-    logging_level: str = STANDARD_LOGGING_LEVEL,
+    logging_level: str = constants.STANDARD_LOGGING_LEVEL,
     mypy: bool = False,
 ) -> List[str]:
     """Run path list."""
@@ -51,7 +48,9 @@ def run(
 
                 file_buffer: io.TextIOWrapper
                 with open(file_path, "r") as file_buffer:
-                    svst_errors = parse_code(file_buffer.read(), file_path[2:], logging_level)
+                    svst_errors = parse_code(
+                        file_buffer.read(), logging_level, file_path[2:]
+                    )
                     for svst_error in svst_errors:
                         yield output.output_string_constructor(svst_error)
 

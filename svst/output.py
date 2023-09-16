@@ -1,7 +1,7 @@
-from typing import Dict, Optional
+from typing import Optional
 from typing_extensions import TypedDict
 
-from constants import STANDARD_LOGGING_LEVEL
+from svst import constants
 
 
 class OutputTypedDict(TypedDict):
@@ -17,7 +17,7 @@ def output_structure_constructor(
     line_number: int,
     variable_name: str,
     variable_scope: str,
-    logging_level: str = STANDARD_LOGGING_LEVEL,
+    logging_level: str = constants.STANDARD_LOGGING_LEVEL,
 ) -> OutputTypedDict:
     """Constructor for dictionary output."""
 

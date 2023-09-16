@@ -1,4 +1,4 @@
-# Standalone Variable Static Typing
+# Standalone Variable Static Typing (`svst`)
 > Full-on Python Static Typing
 
 ![Python Version](https://img.shields.io/badge/Python-3.7.17-yellow.svg)
@@ -9,7 +9,6 @@
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: ruff](https://img.shields.io/badge/linting-ruff-808080.svg)](https://github.com/astral-sh/ruff)
-
 
 Standalone Variable Static Type Checker using [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 

@@ -1,5 +1,5 @@
 from svst import api
-from svst.parsing import output_structure_constructor
+from svst import output
 
 
 def test_run_file_simple_code():
@@ -11,7 +11,7 @@ b = 2  # line 4
     logging_level: str = "ERROR"
 
     assert api.parse_code(code, logging_level) == [
-        output_structure_constructor(None, 4, "b", "global", logging_level)
+        output.output_structure_constructor(None, 4, "b", "global", logging_level)
     ]
 
     code: str = """
@@ -22,8 +22,8 @@ b = 2
     logging_level: str = "ERROR"
 
     assert api.parse_code(code, logging_level) == [
-        output_structure_constructor(None, 3, "a", "global", logging_level),
-        output_structure_constructor(None, 4, "b", "global", logging_level),
+        output.output_structure_constructor(None, 3, "a", "global", logging_level),
+        output.output_structure_constructor(None, 4, "b", "global", logging_level),
     ]
 
 
@@ -47,7 +47,7 @@ for i in range(1,5):
     logging_level: str = "WARNING"
 
     assert api.parse_code(code, logging_level) == [
-        output_structure_constructor(None, 5, "i", "global", logging_level)
+        output.output_structure_constructor(None, 5, "i", "global", logging_level)
     ]
 
 
@@ -84,7 +84,7 @@ for key, value in test_dict.items():
     logging_level = "ERROR"
 
     assert api.parse_code(code, logging_level) == [
-        output_structure_constructor(None, 11, "value", "global", logging_level)
+        output.output_structure_constructor(None, 11, "value", "global", logging_level)
     ]
 
     code: str = """
@@ -103,7 +103,7 @@ for key, value in test_dict.items():
     logging_level = "ERROR"
 
     assert api.parse_code(code, logging_level) == [
-        output_structure_constructor(None, 11, "key", "global", logging_level)
+        output.output_structure_constructor(None, 11, "key", "global", logging_level)
     ]
 
     code: str = """
@@ -120,6 +120,6 @@ for key, value in test_dict.items():
     logging_level = "ERROR"
 
     assert api.parse_code(code, logging_level) == [
-        output_structure_constructor(None, 9, "key", "global", logging_level),
-        output_structure_constructor(None, 9, "value", "global", logging_level),
+        output.output_structure_constructor(None, 9, "key", "global", logging_level),
+        output.output_structure_constructor(None, 9, "value", "global", logging_level),
     ]

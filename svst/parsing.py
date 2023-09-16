@@ -2,9 +2,7 @@ import ast
 
 from typing import List, Dict, Union, Optional
 
-from constants import STANDARD_LOGGING_LEVEL
-
-from output import output_structure_constructor
+from svst import constants, output
 
 
 class ParentNodeTransformer(ast.NodeTransformer):
@@ -19,7 +17,7 @@ class StaticTypeEnforcer(ast.NodeVisitor):
     def __init__(
         self,
         file_name: Optional[str] = None,
-        logging_level: str = STANDARD_LOGGING_LEVEL,
+        logging_level: str = constants.STANDARD_LOGGING_LEVEL,
     ) -> None:
         self.scope: str = "global"
         self.assignments: Dict[str, set] = {"global": set()}
@@ -53,7 +51,7 @@ class StaticTypeEnforcer(ast.NodeVisitor):
             if var_name not in self.type_annotations[self.scope]:
                 if var_name not in self.assignments[self.scope]:
                     self.output.append(
-                        output_structure_constructor(
+                        output.output_structure_constructor(
                             self.file_name,
                             node.lineno,
                             var_name,
@@ -69,7 +67,7 @@ class StaticTypeEnforcer(ast.NodeVisitor):
             var_name = node.target.id
             if var_name not in self.type_annotations[self.scope]:
                 self.output.append(
-                    output_structure_constructor(
+                    output.output_structure_constructor(
                         self.file_name,
                         node.lineno,
                         var_name,
@@ -83,7 +81,7 @@ class StaticTypeEnforcer(ast.NodeVisitor):
                     var_name = elt.id
                     if var_name not in self.type_annotations[self.scope]:
                         self.output.append(
-                            output_structure_constructor(
+                            output.output_structure_constructor(
                                 self.file_name,
                                 node.lineno,
                                 var_name,

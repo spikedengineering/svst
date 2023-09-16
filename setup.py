@@ -1,4 +1,6 @@
 # Always prefer setuptools over distutils
+import os
+
 from setuptools import setup  # type: ignore
 
 # To use a consistent encoding
@@ -6,11 +8,11 @@ from codecs import open
 from os import path
 
 # The directory containing this file
-HERE = path.abspath(path.dirname(__file__))
+HERE: str = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
 with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
-    long_description = f.read()
+    long_description: str = f.read()
 
 # This call to setup() does all the work
 setup(
@@ -39,4 +41,9 @@ setup(
     packages=["svst"],
     include_package_data=True,
     install_requires=["mypy"],
+    entry_points={
+        "console_scripts": [
+            "svst = svst.cli:main",
+        ],
+    },
 )
