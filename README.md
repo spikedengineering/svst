@@ -13,8 +13,6 @@
 
 Standalone Variable Static Type Checker using [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html)
 
-A full-on static typing approach to writing Python code <3
-
 ## Why?
 
 Python is an amazing programming language; my favorite one for a lot of reasons. With the broad functionality, ease of use, development speed, and friendly community; I could be here all day saying good things about it.
