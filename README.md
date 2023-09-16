@@ -39,24 +39,49 @@ python3 -m pip install -U svst
 You can type-check the standalone variables of a program like this:
 
 ```shell
-svst PROGRAM
+svst PATH_OR_FILE
 ```
 
 You can type-check a program including the `mypy` functionality like this as well:
 
 ```shell
-svst --mypy PROGRAM
+svst --mypy PATH_OR_FILE
 ```
 
-## Integrations
+You can run a simple check hiding the errors:
+
+```shell
+svst --mypy --check PATH_OR_FILE
+```
+
+## Intended Integrations [WiP]
 
 * Vim
 * PyCharm
 * VS Code
 * pre-commit
 
-## Documentation
+## Documentation [WiP]
 
-
+[svst.readthedocs.org](https://svst.readthedocs.org/)
 
 ## Contributing
+
+As you can see this project is still in pretty rough shape and a lot of improvement can be done.
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+## License
+
+Distributed under the Mozilla Public License Version 2.0. See `LICENSE` for more information.

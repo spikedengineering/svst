@@ -21,7 +21,11 @@ def _get_configuration_path() -> Optional[str]:
 
 
 def read_configuration() -> Optional[Dict[str, str]]:
-    """Get configuration keys from file."""
+    """Get configuration keys from file.
+
+    Returns:
+        When a configuration file is available the config Dict is returned.
+    """
 
     config_path: str = _get_configuration_path()
 

@@ -11,7 +11,15 @@ config = read_configuration()
 
 
 def is_ignored_file(root: str, file: str) -> bool:
-    """Return if the file is ignored by the configuration."""
+    """Return if the file is ignored by the configuration.
+
+    Args:
+        root: Directory path str.
+        file: Name of the file.
+
+    Returns:
+        If the file needs to be ignored based on the configurations.
+    """
 
     if not file.endswith(".py"):
         return True
@@ -36,6 +44,14 @@ def is_ignored_file(root: str, file: str) -> bool:
 def run_and_clean_mypy_output_in_path(
     path: str,
 ) -> List[str]:
+    """Use mypy api to analyse a directory or file.
+
+    Args:
+        path: file or directory path str.
+
+    Returns:
+        str:
+    """
     results: Tuple[str, str, int] = mypy_api.run([path])
 
     for error_message in results[0].split("\n")[:-2]:
