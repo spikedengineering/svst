@@ -7,20 +7,10 @@ from svst import constants
 from typing import Optional, Dict, Union
 
 
-def _get_caller_directory() -> Union[str, None]:
-    """Get the project root directory."""
-    frame: inspect.FrameInfo = inspect.stack()[1]
-    module = inspect.getmodule(frame[0])
-    if module:
-        filename: str = module.__file__
-        return os.path.dirname(filename)
-    return None
-
-
 def _get_configuration_path() -> Optional[str]:
     """Get configuration file path."""
 
-    root_directory: str = os.path.dirname(_get_caller_directory())
+    root_directory: str = os.getcwd()
     if root_directory:
         file_name: str
         for file_name in constants.POSSIBLE_CONFIGURATION_FILES:
