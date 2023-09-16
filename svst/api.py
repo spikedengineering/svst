@@ -14,8 +14,8 @@ from constants import (
 
 def parse_code(
     code: str,
-    logging_level: str = STANDARD_LOGGING_LEVEL,
     file_name: Optional[str] = None,
+    logging_level: str = STANDARD_LOGGING_LEVEL,
 ) -> List[output.OutputTypedDict]:
     """Parse code directly and return a list of output dictionaries."""
 
@@ -41,7 +41,6 @@ def run(
         root: str
         dirs: List[str]
         files: List[str]
-        print(path)
         for root, dirs, files in os.walk(path):
             file: str
             for file in files:
@@ -52,7 +51,7 @@ def run(
 
                 file_buffer: io.TextIOWrapper
                 with open(file_path, "r") as file_buffer:
-                    svst_errors = parse_code(file_buffer.read(), logging_level, file_path[2:])
+                    svst_errors = parse_code(file_buffer.read(), file_path[2:], logging_level)
                     for svst_error in svst_errors:
                         yield output.output_string_constructor(svst_error)
 
