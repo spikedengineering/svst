@@ -2,9 +2,9 @@ import ast
 
 from typing import List, Dict, Union, Optional
 
-from svst.constants import STANDARD_LOGGING_LEVEL
+from constants import STANDARD_LOGGING_LEVEL
 
-from svst.output import output_structure_constructor
+from output import output_structure_constructor
 
 
 class ParentNodeTransformer(ast.NodeTransformer):

@@ -1,0 +1,13 @@
+black==23.3.0
+click==8.1.7
+importlib-metadata==6.7.0
+mypy==1.4.1
+mypy-extensions==1.0.0
+packaging==23.1
+pathspec==0.11.2
+platformdirs==3.10.0
+ruff==0.0.289
+tomli==2.0.1
+typed-ast==1.5.5
+typing_extensions==4.7.1
+zipp==3.15.0

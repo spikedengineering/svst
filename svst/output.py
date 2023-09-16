@@ -1,6 +1,15 @@
 from typing import Dict, Optional
+from typing_extensions import TypedDict
 
-from svst.constants import STANDARD_LOGGING_LEVEL
+from constants import STANDARD_LOGGING_LEVEL
+
+
+class OutputTypedDict(TypedDict):
+    file_name: Optional[str]
+    line_number: int
+    variable_name: str
+    variable_scope: str
+    logging_level: str
 
 
 def output_structure_constructor(
@@ -9,7 +18,9 @@ def output_structure_constructor(
     variable_name: str,
     variable_scope: str,
     logging_level: str = STANDARD_LOGGING_LEVEL,
-) -> Dict:
+) -> OutputTypedDict:
+    """Constructor for dictionary output."""
+
     return {
         "file_name": file_name,
         "line_number": line_number,
@@ -19,16 +30,14 @@ def output_structure_constructor(
     }
 
 
-def output_structure_text_constructor(
-    output_structure: Dict,
+def output_string_constructor(
+    output_structure: OutputTypedDict,
 ) -> str:
-    string = (
+    """Constructor for string output."""
+
+    return (
         f"{output_structure['file_name']}:{output_structure['line_number']}: "
         f"error: Variable \"{output_structure['variable_name']}\" is missing "
         f"a standalone variable type annotation in the "
         f"scope \"{output_structure['variable_scope']}\"  [no-untyped-var]"
     )
-
-    # todo: logging
-
-    return string
