@@ -27,15 +27,27 @@ def is_ignored_file(root: str, file: str) -> bool:
     if not config:
         return False
 
-    for prefix_path in config["ignore_path_prefix"].split("\n")[1:]:  # todo
+    for prefix_path in (
+        [item for item in config["ignore_path_prefix"].split("\n") if item]
+        if "ignore_path_prefix" in config
+        else []
+    ):
         if root.replace("./", "", 1).startswith(prefix_path):
             return True
 
-    for directory in config["ignore_directory"].split("\n")[1:]:
+    for directory in (
+        [item for item in config["ignore_directory"].split("\n") if item]
+        if "ignore_directory" in config
+        else []
+    ):
         if directory in root:
             return True
 
-    if file in config["ignored_file_names"].split("\n")[1:]:
+    if (
+        file in [item for item in config["ignored_file_names"].split("\n") if item]
+        if "ignored_file_names" in config
+        else []
+    ):
         return True
 
     return False
@@ -58,7 +70,20 @@ def run_and_clean_mypy_output_in_path(
         yield error_message
 
 
-def ident_one_tab(parent_code_block, code_multi_line_string):
+def indent_one_tab(parent_code_block: str, code_multi_line_string: str) -> str:
+    """Ident one tab over a code string, and be able to inject a parent code block
+    before the indentation start.
+
+    This method was created for tests purpose.
+
+    Args:
+        parent_code_block: code block to be placed in the first line without any indentation.
+        code_multi_line_string: code block to be indented.
+
+    Returns:
+        Code str with the parent_code_block on top and all the code_multi_line_string indented below.
+    """
+
     string: str = parent_code_block + "\n"
 
     line: str

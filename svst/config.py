@@ -1,10 +1,9 @@
 import os
-import inspect
 import configparser
 
 from svst import constants
 
-from typing import Optional, Dict, Union
+from typing import Optional, Dict
 
 
 def _get_configuration_path() -> Optional[str]:

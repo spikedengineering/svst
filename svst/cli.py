@@ -20,7 +20,7 @@ def main() -> None:
     for error_line in error_messages:
         errors_count += 1
         if not arguments.check:
-            print(error_line)
+            print(error_line, file=sys.stderr)
 
     summary_message = (
         f"Found {errors_count} errors running svst and mypy."
@@ -29,6 +29,6 @@ def main() -> None:
     )
 
     if errors_count:
-        sys.exit(summary_message)
+        print(summary_message, file=sys.stderr)
     else:
         print(summary_message)

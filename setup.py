@@ -1,6 +1,4 @@
 # Always prefer setuptools over distutils
-import os
-
 from setuptools import setup  # type: ignore
 
 # To use a consistent encoding
@@ -17,13 +15,14 @@ with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
 # This call to setup() does all the work
 setup(
     name="svst",
-    version="0.1.3",
+    version="0.1.4",
     description="Standalone Variable Static Typing",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://svst.readthedocs.io/",
     author="Spiked Engineering",
     author_email="spikedengineering@tutanota.com",
+    project_urls={"Code Repository": "https://github.com/spikedengineering/svst"},
     license="MPL2",
     classifiers=[
         "Intended Audience :: Developers",
@@ -34,6 +33,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Operating System :: OS Independent",
     ],
