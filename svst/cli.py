@@ -30,5 +30,6 @@ def main() -> None:
 
     if errors_count:
         print(summary_message, file=sys.stderr)
+        sys.exit(1)
     else:
         print(summary_message)
