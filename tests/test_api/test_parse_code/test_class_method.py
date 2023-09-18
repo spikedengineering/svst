@@ -1,4 +1,6 @@
-from svst import api, output, utils
+from svst import api, output
+
+from tests import utils
 
 
 def test_parse_code_simple_method_code(simple_code_1_error, simple_code_2_errors):

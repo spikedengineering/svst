@@ -74,8 +74,9 @@ def run(
                 file_buffer: io.TextIOWrapper
                 with open(file_path, "r") as file_buffer:
                     svst_errors = parse_code(
-                        file_buffer.read(), logging_level, file_path[2:]
+                        file_buffer.read(), logging_level, file_path
                     )
+
                     for svst_error in svst_errors:
                         yield output.output_string_constructor(svst_error)
 

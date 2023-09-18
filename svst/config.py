@@ -7,7 +7,7 @@ from typing import Optional, Dict
 
 
 def _get_configuration_path() -> Optional[str]:
-    """Get configuration file path."""
+    """Get configuration file path from project root directory."""
 
     root_directory: str = os.getcwd()
     if root_directory:
@@ -16,6 +16,7 @@ def _get_configuration_path() -> Optional[str]:
             file_path: str = os.path.join(root_directory, file_name)
             if os.path.exists(file_path):
                 return file_path
+
     return None
 
 
