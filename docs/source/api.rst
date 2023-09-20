@@ -8,5 +8,8 @@ api
 .. autoclass:: svst.api.parse_code
     :members:
 
+.. autoclass:: svst.api.mypy_run
+    :members:
+
 .. autoclass:: svst.api.run
     :members:

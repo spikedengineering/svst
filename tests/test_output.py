@@ -6,16 +6,14 @@ def test_output_structure_constructor():
     line_number: int = 1
     variable_name: str = "a"
     variable_scope: str = "global"
-    logging_level: str = "ERROR"
 
     assert output.output_structure_constructor(
-        file_name, line_number, variable_name, variable_scope, logging_level
+        file_name, line_number, variable_name, variable_scope
     ) == {
         "file_name": file_name,
         "line_number": line_number,
         "variable_name": variable_name,
         "variable_scope": variable_scope,
-        "logging_level": logging_level,
     }
 
 
@@ -26,7 +24,7 @@ def test_output_string_constructor():
     variable_scope: str = "global"
 
     output_structure: output.OutputTypedDict = output.output_structure_constructor(
-        file_name, line_number, variable_name, variable_scope, "ERROR"
+        file_name, line_number, variable_name, variable_scope
     )
 
     assert output.output_string_constructor(output_structure) == (

@@ -10,3 +10,6 @@ output
 
 .. autoclass:: svst.output.output_string_constructor
     :members:
+
+.. autoclass:: svst.output.output_string_converter_terminal
+    :members:

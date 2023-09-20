@@ -17,14 +17,12 @@ class StaticTypeEnforcer(ast.NodeVisitor):
     def __init__(
         self,
         file_name: Optional[str] = None,
-        logging_level: str = constants.STANDARD_LOGGING_LEVEL,
     ) -> None:
         self.scope: str = "global"
         self.assignments: Dict[str, set] = {"global": set()}
         self.type_annotations: Dict[str, set] = {"global": set()}
 
         self.file_name = file_name
-        self.logging_level = logging_level
 
         self.output: List[Dict[str, Union[str, int]]] = []
 
@@ -56,7 +54,6 @@ class StaticTypeEnforcer(ast.NodeVisitor):
                             node.lineno,
                             var_name,
                             self.scope,
-                            self.logging_level,
                         )
                     )
                 self.assignments[self.scope].add(var_name)
@@ -72,7 +69,6 @@ class StaticTypeEnforcer(ast.NodeVisitor):
                         node.lineno,
                         var_name,
                         self.scope,
-                        self.logging_level,
                     )
                 )
         if isinstance(node.target, ast.Tuple):
@@ -86,7 +82,6 @@ class StaticTypeEnforcer(ast.NodeVisitor):
                                 node.lineno,
                                 var_name,
                                 self.scope,
-                                self.logging_level,
                             )
                         )
 

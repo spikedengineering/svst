@@ -10,6 +10,7 @@ Welcome to svst's documentation!
    :maxdepth: 2
    :caption: Python API
 
+   source/cli
    source/api
    source/output
    source/config

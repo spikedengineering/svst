@@ -8,10 +8,8 @@ a: int = 1
 b = 2  # line 4
     """
 
-    logging_level: str = "ERROR"
-
-    assert api.parse_code(code, logging_level) == [
-        output.output_structure_constructor(None, 4, "b", "global", logging_level)
+    assert api.parse_code(code) == [
+        output.output_structure_constructor(None, 4, "b", "global")
     ]
 
     code: str = """
@@ -19,11 +17,9 @@ a = 1
 b = 2
     """
 
-    logging_level: str = "ERROR"
-
-    assert api.parse_code(code, logging_level) == [
-        output.output_structure_constructor(None, 3, "a", "global", logging_level),
-        output.output_structure_constructor(None, 4, "b", "global", logging_level),
+    assert api.parse_code(code) == [
+        output.output_structure_constructor(None, 3, "a", "global"),
+        output.output_structure_constructor(None, 4, "b", "global"),
     ]
 
 
@@ -46,8 +42,8 @@ for i in range(1,5):
 
     logging_level: str = "WARNING"
 
-    assert api.parse_code(code, logging_level) == [
-        output.output_structure_constructor(None, 5, "i", "global", logging_level)
+    assert api.parse_code(code) == [
+        output.output_structure_constructor(None, 5, "i", "global")
     ]
 
 
@@ -81,10 +77,8 @@ for key, value in test_dict.items():
     print(key, value)
     """
 
-    logging_level = "ERROR"
-
-    assert api.parse_code(code, logging_level) == [
-        output.output_structure_constructor(None, 11, "value", "global", logging_level)
+    assert api.parse_code(code) == [
+        output.output_structure_constructor(None, 11, "value", "global")
     ]
 
     code: str = """
@@ -100,10 +94,8 @@ for key, value in test_dict.items():
     print(key, value)
     """
 
-    logging_level = "ERROR"
-
-    assert api.parse_code(code, logging_level) == [
-        output.output_structure_constructor(None, 11, "key", "global", logging_level)
+    assert api.parse_code(code) == [
+        output.output_structure_constructor(None, 11, "key", "global")
     ]
 
     code: str = """
@@ -117,9 +109,7 @@ for key, value in test_dict.items():
     print(key, value)
     """
 
-    logging_level = "ERROR"
-
-    assert api.parse_code(code, logging_level) == [
-        output.output_structure_constructor(None, 9, "key", "global", logging_level),
-        output.output_structure_constructor(None, 9, "value", "global", logging_level),
+    assert api.parse_code(code) == [
+        output.output_structure_constructor(None, 9, "key", "global"),
+        output.output_structure_constructor(None, 9, "value", "global"),
     ]

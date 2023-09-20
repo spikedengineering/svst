@@ -1,8 +1,5 @@
 import re
 
-from typing import List, Tuple, Optional
-
-from mypy import api as mypy_api
 
 from svst.config import read_configuration
 
@@ -14,11 +11,12 @@ def is_ignored_file(root: str, file: str) -> bool:
     """Return if the file is ignored by the configuration.
 
     Args:
-        root: Directory path str.
+        root: Directory path string.
         file: Name of the file.
 
     Returns:
-        If the file needs to be ignored based on the configurations.
+        Everything that is not a `.py` extension file is ignored.
+        Checks if a path prefix, a directory or a file need to be ignored based on the configurations.
     """
 
     if not file.endswith(".py"):
@@ -51,20 +49,3 @@ def is_ignored_file(root: str, file: str) -> bool:
         return True
 
     return False
-
-
-def run_and_clean_mypy_output_in_path(
-    path: str,
-) -> List[str]:
-    """Use mypy api to analyse a directory or file.
-
-    Args:
-        path: file or directory path str.
-
-    Returns:
-        str:
-    """
-    results: Tuple[str, str, int] = mypy_api.run([path])
-
-    for error_message in results[0].split("\n")[:-2]:
-        yield error_message
