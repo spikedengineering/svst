@@ -15,8 +15,8 @@ with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
 # This call to setup() does all the work
 setup(
     name="svst",
-    version="0.1.8",
-    description="Standalone Variable Static Typing",
+    version="0.1.9",
+    description="Standalone Variables Static Typing",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://svst.readthedocs.io/",

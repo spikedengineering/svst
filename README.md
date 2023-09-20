@@ -7,7 +7,7 @@
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: ruff](https://img.shields.io/badge/linting-ruff-808080.svg)](https://github.com/astral-sh/ruff)
-[![Uses: ast](https://img.shields.io/badge/uses-ast-000fff.svg)](https://github.com/astral-sh/ruff)
+[![Uses: ast](https://img.shields.io/badge/uses-ast-000fff.svg)](https://docs.python.org/3/library/ast.html)
 
 ### Standalone Variables Static Typing
 

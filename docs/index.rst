@@ -8,7 +8,7 @@ Welcome to svst's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Python API
+   :caption: Contents:
 
    svst/cli
    svst/api

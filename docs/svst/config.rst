@@ -1,6 +1,6 @@
-==============
+======
 config
-==============
+======
 
 .. currentmodule:: svst.config
 

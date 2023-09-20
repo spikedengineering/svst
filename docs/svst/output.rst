@@ -1,6 +1,6 @@
-==============
+======
 output
-==============
+======
 
 .. currentmodule:: svst.output
 
