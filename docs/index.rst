@@ -10,11 +10,11 @@ Welcome to svst's documentation!
    :maxdepth: 2
    :caption: Python API
 
-   source/cli
-   source/api
-   source/output
-   source/config
-   source/utils
+   svst/cli
+   svst/api
+   svst/output
+   svst/config
+   svst/utils
 
 
 

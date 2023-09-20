@@ -1,16 +1,17 @@
-# Standalone Variable Static Typing (`svst`)
+# svst
 
-![Python Version](https://img.shields.io/badge/Python-3.7.17-yellow.svg)
+![Python Version](https://img.shields.io/badge/Python-3.7+-yellow.svg)
 [![Stable Version](https://img.shields.io/pypi/v/svst?color=blue)](https://pypi.org/project/svst/)
 [![Downloads](https://img.shields.io/pypi/dm/svst)](https://pypistats.org/packages/svst)
 [![Documentation Status](https://readthedocs.org/projects/svst/badge/?version=latest)](https://svst.readthedocs.io/en/latest/?badge=latest)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: ruff](https://img.shields.io/badge/linting-ruff-808080.svg)](https://github.com/astral-sh/ruff)
+[![Uses: ast](https://img.shields.io/badge/uses-ast-000fff.svg)](https://github.com/astral-sh/ruff)
 
-> Full-on Python Static Typing
+### Standalone Variables Static Typing
 
-Standalone Variable Static Type Checking using [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html).
+A full-on approach to Python static type checking.
 
 ## Why?
 
@@ -27,6 +28,8 @@ At first, I created a simple file to do this, but soon I found that I needed a p
 I'd like to extend immense gratitude to [@alphasensei](https://github.com/alphasensei) for pioneering the research and developing the initial proof of concept for this library.
 
 This is an attempt of bringing full-on static typing to Python and, with it, much more robust codebases.
+
+For the core functionality `svst` uses [Abstract Syntax Trees](https://docs.python.org/3/library/ast.html).
 
 ## Quick start
 
