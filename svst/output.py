@@ -75,6 +75,10 @@ def output_string_converter_terminal(output_string: str):
         Colored printable string.
     """
 
-    match = re.search(r"^(\./)?(.+:)(.+:)(.+)(\[.+)$", output_string)
+    match = re.search(r"^(\./)?(.+:)([0-9]+:)(.+:)(.+)(\[.+)?$", output_string)
+    if not match:
+        return output_string
 
-    return f"{match.group(2)}\033[31m{match.group(3)}\033[0m{match.group(4)}\033[33m{match.group(5)}\033[0m"
+    message: str = f"{match.group(2)}{match.group(3)}\033[31m{match.group(4)}\033[0m{match.group(5)}\033[33m{match.group(6)}\033[0m"
+
+    return message
