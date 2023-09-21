@@ -23,14 +23,12 @@ def parse_code(
         A list of OutputTypedDict that contain the info of the svst error.
     """
 
-    tree = ast.parse(code)
-    ast.increment_lineno(tree)
-    ast.fix_missing_locations(tree)
-    parsing.ParentNodeTransformer().visit(tree)
-    visitor = parsing.StaticTypeEnforcer(file_name)
-    visitor.visit(tree)
+    tree = ast.parse(code, file_name)
 
-    return visitor.output
+    checker = parsing.VariableAnnotationChecker(file_name)
+    checker.visit(tree)
+
+    return checker.error_messages
 
 
 def mypy_run(

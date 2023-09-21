@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath(".."))
 project = "svst"
 copyright = "2023, Spiked Engineering"
 author = "Spiked Engineering"
-release = "0.1.9"
+release = "0.1.10"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

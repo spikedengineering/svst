@@ -60,8 +60,7 @@ def output_string_constructor(
 
     return (
         f"{output_structure['file_name']}:{output_structure['line_number']}: "
-        f"error: Variable \"{output_structure['variable_name']}\" is missing "
-        f"a standalone variable type annotation in the "
+        f"error: {output_structure['variable_name']} is missing a type annotation in the "
         f"scope \"{output_structure['variable_scope']}\"  [no-untyped-var]"
     )
 
