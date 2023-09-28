@@ -75,7 +75,9 @@ def output_string_converter_terminal(output_string: str):
         Colored printable string.
     """
 
-    match = re.search(r"^(\./)?(.+:)([0-9]+:)(.+:)(.+?(?=\[|))(\[.+)?$", output_string)
+    match = re.search(
+        r"^(\.)?(.+:)([0-9]+:)(.+:)(.+?(?=\[|))(\[[a-z\-]+\])?$", output_string
+    )
     if not match:
         return output_string
 
