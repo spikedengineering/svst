@@ -76,11 +76,14 @@ def output_string_converter_terminal(output_string: str):
     """
 
     match = re.search(
-        r"^(\.)?(.+:)([0-9]+:)(.+:)(.+?(?=\[|))(\[[a-z\-]+\])?$", output_string
+        r"^(\./)?(.+:)([0-9]+:)(.+:)(.+?(?=\[|))(\[[a-z\-]+])?$", output_string
     )
     if not match:
         return output_string
 
-    message: str = f"{match.group(2)}{match.group(3)}\033[31m{match.group(4)}\033[0m{match.group(5)}\033[33m{match.group(6)}\033[0m"
+    message: str = f"{match.group(2)}{match.group(3)}\033[31m{match.group(4)}\033[0m{match.group(5)}"
+
+    if match.group(6):
+        message += f"\033[33m{match.group(6)}\033[0m"
 
     return message
