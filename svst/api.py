@@ -1,18 +1,36 @@
 import ast
 import os
 import io
+import tokenize
 
-from svst import utils, output, parsing
-
-from typing import List, Tuple, Optional
+from typing import Iterator, List, Tuple, Optional
 
 from mypy import api as mypy_api
+
+from svst import utils, output, parsing, constants
+
+
+def get_lines_to_ignore(code):
+    lines_to_ignore = set()
+    tokens = tokenize.tokenize(io.BytesIO(code.encode("utf-8")).readline)
+
+    type_ignore_string_prefix: str = "type: ignore"
+    for tok in tokens:
+        if tok.type == tokenize.COMMENT:
+            if tok.string.strip().endswith(
+                type_ignore_string_prefix
+            ) or tok.string.endswith(
+                f"{type_ignore_string_prefix}[{constants.ERROR_NAME}]"
+            ):
+                lines_to_ignore.add(tok.start[0])
+
+    return lines_to_ignore
 
 
 def parse_code(
     code: str,
     file_name: Optional[str] = None,
-) -> List[output.OutputTypedDict]:
+) -> Iterator[output.OutputTypedDict]:
     """Parse code directly and return a list of output dictionaries.
 
     Args:
@@ -22,13 +40,15 @@ def parse_code(
     Returns:
         A list of OutputTypedDict that contain the info of the svst error.
     """
-
     tree = ast.parse(code, file_name)
+    lines_to_ignore = get_lines_to_ignore(code)
 
     checker = parsing.VariableAnnotationChecker(file_name)
     checker.visit(tree)
 
-    return checker.error_messages
+    for error_message in checker.error_messages:
+        if error_message["line_number"] not in lines_to_ignore:
+            yield error_message
 
 
 def mypy_run(

@@ -1,7 +1,9 @@
+import re
+
 from typing import Optional
 from typing_extensions import TypedDict
 
-import re
+from svst import constants
 
 
 class OutputTypedDict(TypedDict):
@@ -60,12 +62,12 @@ def output_string_constructor(
 
     return (
         f"{output_structure['file_name']}:{output_structure['line_number']}: "
-        f"error: {output_structure['variable_name']} is missing a type annotation in the "
-        f"scope \"{output_structure['variable_scope']}\"  [no-untyped-var]"
+        f"error: {output_structure['variable_name']} is missing a type annotation in "
+        f"scope \"{output_structure['variable_scope']}\"  [{constants.ERROR_NAME}]"
     )
 
 
-def output_string_converter_terminal(output_string: str):
+def output_string_converter_terminal(output_string: str) -> str:
     """Converts a plain error string into a colored printable one.
 
     Args:

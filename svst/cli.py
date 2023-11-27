@@ -45,3 +45,7 @@ def main() -> None:
         sys.exit(1)
     else:
         print(summary_message)
+
+
+if __name__ == '__main__':
+    main()
