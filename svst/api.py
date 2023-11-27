@@ -10,19 +10,27 @@ from mypy import api as mypy_api
 from svst import utils, output, parsing, constants
 
 
-def get_lines_to_ignore(code):
-    lines_to_ignore = set()
+def get_lines_to_ignore(code: str) -> List[int]:
+    """Read lines to ignore in a string of source code.
+
+    Args:
+        code: String of source code.
+
+    Returns:
+        List of lines to ignore.
+
+    """
+    type_ignore_string: str = "type: ignore"
+
     tokens = tokenize.tokenize(io.BytesIO(code.encode("utf-8")).readline)
 
-    type_ignore_string_prefix: str = "type: ignore"
-    for tok in tokens:
-        if tok.type == tokenize.COMMENT:
-            if tok.string.strip().endswith(
-                type_ignore_string_prefix
-            ) or tok.string.endswith(
-                f"{type_ignore_string_prefix}[{constants.ERROR_NAME}]"
-            ):
-                lines_to_ignore.add(tok.start[0])
+    lines_to_ignore: List[int] = []
+    for token in tokens:
+        if token.type == tokenize.COMMENT:
+            if token.string.strip().endswith(
+                type_ignore_string
+            ) or token.string.endswith(f"{type_ignore_string}[{constants.ERROR_NAME}]"):
+                lines_to_ignore.append(token.start[0])
 
     return lines_to_ignore
 

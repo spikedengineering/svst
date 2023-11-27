@@ -48,6 +48,7 @@ sphinxcontrib-jquery==4.1
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
+-e git+https://github.com/spikedengineering/svst.git@36a27ce9cd579115bfa96095477f35da2618dc52#egg=svst
 tomli==2.0.1
 twine==4.0.2
 typed-ast==1.5.5
