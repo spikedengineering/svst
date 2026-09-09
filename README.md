@@ -15,7 +15,7 @@ A full-on approach to Python static type checking.
 
 ## Why?
 
-Python is an amazing programming language; my favorite one for a lot of reasons. With the broad functionality, ease of use, development speed, and friendly community; I could be here all day saying good things about it.
+Python is an amazing programming language; used to be my favorite one for a lot of reasons. With the broad functionality, ease of use, development speed, and friendly community; I could be here all day saying good things about it.
 
 One of the major selling points the dynamic typing, at least initially.
 
