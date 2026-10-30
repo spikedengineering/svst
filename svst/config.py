@@ -3,7 +3,7 @@ import configparser
 
 from svst import constants
 
-from typing import Optional, Dict
+from typing import Optional
 
 
 def _get_configuration_path() -> Optional[str]:
@@ -20,14 +20,14 @@ def _get_configuration_path() -> Optional[str]:
         return None
 
 
-def read_configuration() -> Optional[Dict[str, str]]:
+def read_configuration() -> Optional[configparser.SectionProxy]:
     """Get configuration keys from file.
 
     Returns:
         The configuration dictionary when a configuration file is available the config dict is returned.
     """
 
-    config_path: str = _get_configuration_path()
+    config_path: Optional[str] = _get_configuration_path()
 
     if not config_path:
         return None

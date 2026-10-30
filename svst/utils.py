@@ -1,10 +1,11 @@
-import re
+import configparser
 
+from typing import Optional
 
 from svst.config import read_configuration
 
 
-config = read_configuration()
+config: Optional[configparser.SectionProxy] = read_configuration()
 
 
 def is_ignored_file(root: str, file: str) -> bool:
@@ -25,6 +26,7 @@ def is_ignored_file(root: str, file: str) -> bool:
     if not config:
         return False
 
+    prefix_path: str
     for prefix_path in (
         [item for item in config["ignore_path_prefix"].split("\n") if item]
         if "ignore_path_prefix" in config
@@ -33,6 +35,7 @@ def is_ignored_file(root: str, file: str) -> bool:
         if root.replace("./", "", 1).startswith(prefix_path):
             return True
 
+    directory: str
     for directory in (
         [item for item in config["ignore_directory"].split("\n") if item]
         if "ignore_directory" in config

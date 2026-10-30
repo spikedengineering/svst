@@ -1,6 +1,6 @@
 import re
 
-from typing import Optional
+from typing import Match, Optional
 from typing_extensions import TypedDict
 
 from svst import constants
@@ -62,7 +62,8 @@ def output_string_constructor(
 
     return (
         f"{output_structure['file_name']}:{output_structure['line_number']}: "
-        f"error: {output_structure['variable_name']} is missing a type annotation in "
+        f"error: Variable \"{output_structure['variable_name']}\" is missing a "
+        f"standalone variable type annotation in the "
         f"scope \"{output_structure['variable_scope']}\"  [{constants.ERROR_NAME}]"
     )
 
@@ -77,7 +78,7 @@ def output_string_converter_terminal(output_string: str) -> str:
         Colored printable string.
     """
 
-    match = re.search(
+    match: Optional[Match[str]] = re.search(
         r"^(\./)?(.+:)([0-9]+:)(.+:)(.+?(?=\[|))(\[[a-z\-]+])?$", output_string
     )
     if not match:

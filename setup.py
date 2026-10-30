@@ -42,7 +42,7 @@ setup(
     ],
     packages=["svst"],
     include_package_data=True,
-    install_requires=["mypy"],
+    install_requires=["mypy", "typing_extensions"],
     entry_points={
         "console_scripts": [
             "svst = svst.cli:main",

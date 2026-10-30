@@ -5,11 +5,11 @@ from svst import output
 def test_run_file_simple_code():
     code: str = """
 a: int = 1
-b = 2  # line 4
+b = 2  # line 3
     """
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 4, "b", "global")
+        output.output_structure_constructor(None, 3, "b", "global")
     ]
 
     code: str = """
@@ -18,8 +18,8 @@ b = 2
     """
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 3, "a", "global"),
-        output.output_structure_constructor(None, 4, "b", "global"),
+        output.output_structure_constructor(None, 2, "a", "global"),
+        output.output_structure_constructor(None, 3, "b", "global"),
     ]
 
 
@@ -43,7 +43,7 @@ for i in range(1,5):
     logging_level: str = "WARNING"
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 5, "i", "global")
+        output.output_structure_constructor(None, 4, "i", "global")
     ]
 
 
@@ -78,7 +78,7 @@ for key, value in test_dict.items():
     """
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 11, "value", "global")
+        output.output_structure_constructor(None, 10, "value", "global")
     ]
 
     code: str = """
@@ -95,7 +95,7 @@ for key, value in test_dict.items():
     """
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 11, "key", "global")
+        output.output_structure_constructor(None, 10, "key", "global")
     ]
 
     code: str = """
@@ -110,6 +110,6 @@ for key, value in test_dict.items():
     """
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 9, "key", "global"),
-        output.output_structure_constructor(None, 9, "value", "global"),
+        output.output_structure_constructor(None, 8, "key", "global"),
+        output.output_structure_constructor(None, 8, "value", "global"),
     ]

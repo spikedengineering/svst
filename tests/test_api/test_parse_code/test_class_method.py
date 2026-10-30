@@ -10,7 +10,7 @@ def test_parse_code_simple_method_code(simple_code_1_error, simple_code_2_errors
     )
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 6, "b", "some_method")
+        output.output_structure_constructor(None, 5, "b", "SomeClass.some_method")
     ]
 
     code: str = utils.indent_one_tab(
@@ -19,8 +19,8 @@ def test_parse_code_simple_method_code(simple_code_1_error, simple_code_2_errors
     )
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 5, "a", "some_method"),
-        output.output_structure_constructor(None, 6, "b", "some_method"),
+        output.output_structure_constructor(None, 4, "a", "SomeClass.some_method"),
+        output.output_structure_constructor(None, 5, "b", "SomeClass.some_method"),
     ]
 
 
@@ -37,7 +37,7 @@ def test_parse_code_for_method_code(for_code_no_errors, for_code_1_error):
     )
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 7, "i", "some_method")
+        output.output_structure_constructor(None, 6, "i", "SomeClass.some_method")
     ]
 
 
@@ -61,7 +61,7 @@ def test_parse_code_for_dict_method_code(
     )
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 13, "value", "some_method")
+        output.output_structure_constructor(None, 12, "value", "SomeClass.some_method")
     ]
 
     code: str = utils.indent_one_tab(
@@ -71,7 +71,7 @@ def test_parse_code_for_dict_method_code(
 
     assert api.parse_code(
         code,
-    ) == [output.output_structure_constructor(None, 13, "key", "some_method")]
+    ) == [output.output_structure_constructor(None, 12, "key", "SomeClass.some_method")]
 
     code: str = utils.indent_one_tab(
         "class SomeClass:",
@@ -79,8 +79,8 @@ def test_parse_code_for_dict_method_code(
     )
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 11, "key", "some_method"),
-        output.output_structure_constructor(None, 11, "value", "some_method"),
+        output.output_structure_constructor(None, 10, "key", "SomeClass.some_method"),
+        output.output_structure_constructor(None, 10, "value", "SomeClass.some_method"),
     ]
 
     code: str = utils.indent_one_tab(
@@ -89,7 +89,7 @@ def test_parse_code_for_dict_method_code(
     )
 
     assert api.parse_code(code) == [
-        output.output_structure_constructor(None, 5, "test_dict", "some_method"),
-        output.output_structure_constructor(None, 11, "key", "some_method"),
-        output.output_structure_constructor(None, 11, "value", "some_method"),
+        output.output_structure_constructor(None, 4, "test_dict", "SomeClass.some_method"),
+        output.output_structure_constructor(None, 10, "key", "SomeClass.some_method"),
+        output.output_structure_constructor(None, 10, "value", "SomeClass.some_method"),
     ]

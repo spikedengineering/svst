@@ -2,7 +2,7 @@ import sys
 
 from svst import api, output
 
-from typing import List
+from typing import Iterator
 
 import argparse
 
@@ -20,21 +20,22 @@ def main() -> None:
     Prints:
         Error messages and error count.
     """
-    parser = argparse.ArgumentParser()
+    parser: argparse.ArgumentParser = argparse.ArgumentParser()
     parser.add_argument("--mypy", action="store_true")
     parser.add_argument("--check", action="store_true")
     parser.add_argument("paths", nargs="+")
-    arguments = parser.parse_args()
+    arguments: argparse.Namespace = parser.parse_args()
 
-    error_messages: List[str] = api.run(arguments.paths, mypy=arguments.mypy)
+    error_messages: Iterator[str] = api.run(arguments.paths, mypy=arguments.mypy)
 
     errors_count: int = 0
+    error_line: str
     for error_line in error_messages:
         errors_count += 1
         if not arguments.check:
             print(output.output_string_converter_terminal(error_line), file=sys.stderr)
 
-    summary_message = (
+    summary_message: str = (
         f"Found {errors_count} errors running svst and mypy."
         if arguments.mypy
         else f"Found {errors_count} errors running svst."

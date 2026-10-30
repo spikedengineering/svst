@@ -5,7 +5,7 @@ import pytest
 def simple_code_no_errors():
     return """
 a: int = 1
-b: int = 2  # line 4
+b: int = 2  # line 3
 """
 
 
@@ -13,7 +13,7 @@ b: int = 2  # line 4
 def simple_code_1_error():
     return """
 a: int = 1
-b = 2  # line 4
+b = 2  # line 3
 """
 
 
