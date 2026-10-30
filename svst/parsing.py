@@ -66,6 +66,12 @@ class Scope:
         for child in iter_scope_nodes(node):
             if isinstance(child, ast.AnnAssign) and isinstance(child.target, ast.Name):
                 self.declare(child.target.id, child.lineno)
+            elif isinstance(child, (ast.Import, ast.ImportFrom)):
+                # Imported names are typed where they are defined, and cannot be re-annotated.
+                alias: ast.alias
+                for alias in child.names:
+                    if alias.name != "*":
+                        self.declare(alias.asname or alias.name.split(".")[0], child.lineno)
             elif isinstance(child, ast.Global):
                 self.global_names.update(child.names)
             elif isinstance(child, ast.Nonlocal):

@@ -73,6 +73,13 @@ def test_bindings_are_checked(code, expected):
         "D: int = 1\ndef f(a: int = D) -> None:\n    pass\n",
         "squares: list = [i * i for i in range(3)]\n",
         "f: object = lambda q: q\n",
+        # Issue #1: exception variable declared in the function scope.
+        "def my_method() -> str:\n    e: Exception\n    try:\n        return 'hello'\n"
+        "    except Exception as e:\n        return 'goodbye'\n",
+        # Issue #2: imported names are already typed.
+        "from .first_file import greeting\n\ngreeting += 'hello'\n",
+        "import os.path\nos = None\n",
+        "import collections as c\nc = None\n",
     ],
 )
 def test_no_false_positives(code):
